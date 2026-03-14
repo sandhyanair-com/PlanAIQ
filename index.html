@@ -714,6 +714,50 @@ footer{background:var(--slate);padding:76px 5% 40px;}
 .why-title{font-family:var(--font-serif);font-size:.98rem;font-weight:500;color:var(--white);margin-bottom:.5rem;}
 .why-desc{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.7;}
 .why-tagline{font-family:var(--font-mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-top:.8rem;}
+
+
+/* ── Tile-card button (CTA banner — matches uploaded image) ── */
+.btn-tile{
+  display:inline-flex;flex-direction:column;justify-content:space-between;
+  width:200px;height:180px;
+  background:#1e3a8a;
+  border:none;cursor:pointer;padding:22px 20px 20px;
+  border-radius:8px;text-decoration:none;
+  position:relative;overflow:hidden;
+  transition:background .25s var(--ease),transform .2s var(--ease),box-shadow .25s;
+}
+.btn-tile:hover{
+  background:#2444a8;
+  transform:translateY(-3px);
+  box-shadow:0 16px 40px rgba(10,15,30,.35);
+}
+.btn-tile-label{
+  font-family:var(--font-sans);
+  font-size:.9rem;font-weight:600;
+  color:rgba(255,255,255,.92);
+  letter-spacing:-.01em;
+  line-height:1.35;
+  text-align:left;
+  align-self:flex-start;
+}
+.btn-tile-arrow{
+  align-self:flex-end;
+  width:52px;height:52px;
+  display:flex;align-items:center;justify-content:center;
+  transition:transform .25s var(--ease);
+}
+.btn-tile:hover .btn-tile-arrow{transform:translate(3px,-3px);}
+.btn-tile-arrow svg{
+  width:44px;height:44px;
+  stroke:#0a0f1e;fill:none;
+  stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round;
+}
+.btn-tile::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,.07) 0%,transparent 60%);
+  border-radius:8px;opacity:0;transition:opacity .3s;
+}
+.btn-tile:hover::after{opacity:1;}
 </style>
 </head>
 <body>
@@ -876,8 +920,7 @@ footer{background:var(--slate);padding:76px 5% 40px;}
         <div class="chart-canvas-wrap"><canvas id="homeChart1"></canvas></div>
         <div class="chart-legend">
           <div class="chart-legend-item"><div class="chart-legend-dot" style="background:#6b7280"></div>Without analytics</div>
-          <div class="chart-legend-item"><div class="chart-legend-dot" style="background:#0d6e6e"></div>With PlanIQ</div>
-          <div class="chart-legend-item"><div class="chart-legend-dot" style="background:#d97706"></div>Industry benchmark</div>
+          <div class="chart-legend-item"><div class="chart-legend-dot" style="background:#1e3a8a"></div>With PlanIQ</div>
         </div>
         <div class="chart-insight">
           Clients who act on PlanIQ audit recommendations within 30 days see a
@@ -1207,7 +1250,10 @@ footer{background:var(--slate);padding:76px 5% 40px;}
     <p class="cta-sub">Most businesses are running on incomplete information — and the difference between what leadership believes is true and what the data actually shows is where profit quietly disappears. A free PlanIQ audit closes that gap. We visit your operation, map every data flow, quantify every problem, and hand you a written action plan. No commitment. Just clarity.</p>
   </div>
   <div class="cta-actions">
-    <a href="javascript:void(0)" onclick="openMail('Free Consultation Request','')">Schedule Free Consultation <svg viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <a href="javascript:void(0)" onclick="openMail('Free Consultation Request','')" class="btn-tile">
+      <span class="btn-tile-label">Schedule Free Consultation</span>
+      <div class="btn-tile-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+    </a>
     <button class="btn btn-outline-white" onclick="document.getElementById('contact-anchor').scrollIntoView({behavior:'smooth'})">Send a Message</button>
   </div>
 </div>
@@ -1241,8 +1287,8 @@ footer{background:var(--slate);padding:76px 5% 40px;}
       <h3>Let's Talk About Your Business</h3>
       <div class="c-detail"><div class="c-ico">📍</div><div><div class="c-lbl">Location</div><div class="c-val">Port Huron, Michigan · Serving Nationwide</div></div></div>
       <div class="c-detail"><div class="c-ico">📞</div><div><div class="c-lbl">Phone</div><div class="c-val">(810) 937-9864</div></div></div>
-      <div class="c-detail"><div class="c-ico">✉️</div><div><div class="c-lbl">Email</div><div class="c-val"><a href="javascript:void(0)" onclick="openMail('PlanIQ Enquiry','')" style="color:inherit;"><span class="__cf_email__" data-cfemail="543d3a323b142438353a3d257a373b39">[email&#160;protected]</span></a></div></div></div>
-      <a href="javascript:void(0)" onclick="openMail('Free Consultation Request','')">Schedule a Free Call <svg viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <div class="c-detail"><div class="c-ico">✉️</div><div><div class="c-lbl">Email</div><div class="c-val"><a href="javascript:void(0)" onclick="openMail('PlanIQ Enquiry','')" style="color:rgba(255,255,255,.78);">info@planiq.com</a></div></div></div>
+      <a href="javascript:void(0)" onclick="openMail('Free Consultation Request','')" class="btn btn-white">Schedule a Free Call</a>
     </div>
   </div>
   <div class="contact-form-panel">
@@ -1300,7 +1346,7 @@ footer{background:var(--slate);padding:76px 5% 40px;}
       <div class="footer-col-title">Contact</div>
       <ul class="footer-links">
         <li><a href="tel:8109379864">(810) 937-9864</a></li>
-        <li><a href="javascript:void(0)" onclick="openMail('PlanIQ Enquiry','')"><span class="__cf_email__" data-cfemail="d9b0b7bfb699a9b5b8b7b0a8f7bab6b4">[email&#160;protected]</span></a></li>
+        <li><a href="javascript:void(0)" onclick="openMail('PlanIQ Enquiry','')">info@planiq.com</a></li>
         <li><a href="javascript:void(0)">Port Huron, MI</a></li>
         <li><a href="javascript:void(0)" onclick="openMail('Free Consultation Request','')">Book Free Consultation</a></li>
       </ul>
@@ -1326,7 +1372,7 @@ footer{background:var(--slate);padding:76px 5% 40px;}
 <div id="page-energy" class="page"></div>
 
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 /* ─── Industry data ─── */
 const INDUSTRIES = {
   manufacturing: {
@@ -1591,7 +1637,7 @@ function buildIndustryPage(key) {
 }
 
 /* ─── Chart.js renders ─── */
-const TEAL = '#1e3a8a', AMBER = '#d97706', SLATE = '#1a2f42';
+const TEAL = '#1e3a8a', AMBER = '#f97316', SLATE = '#0a0f1e';
 const C = (id) => document.getElementById(id)?.getContext('2d');
 
 function renderHomeChart() {
@@ -1805,11 +1851,6 @@ function toggleFaq(btn) {
   if (!open) { btn.classList.add('open'); btn.nextElementSibling.classList.add('open'); }
 }
 
-/* ─── Scroll reveal ─── */
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); observer.unobserve(e.target); } });
-}, { threshold: 0, rootMargin: '0px 0px 0px 0px' });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 /* ─── Scroll reveal ─── */
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); observer.unobserve(e.target); } });
